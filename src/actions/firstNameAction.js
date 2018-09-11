@@ -1,12 +1,6 @@
-export function firstNameHasChanged(firstName) {
+export const firstNameHasChanged = (firstName) => {
     return {
         type: 'FIRST_NAME_VALUE',
         firstName
-    };
-}
-
-export function updateFirstName(firstName) {
-    return (dispatch) => {
-        dispatch(firstNameHasChanged(firstName));
     };
 }

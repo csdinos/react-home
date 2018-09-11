@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import './FirstName.css';
 import { connect } from 'react-redux';
-import { updateFirstName } from '../../actions/firstNameAction';
-import { Confirmation } from '..';
+import { firstNameHasChanged } from '../../actions/firstNameAction';
 
 class FirstNameComponent extends Component {
   render() {
     return (
       <div>
-        <div>It workss</div>
+        <div>Please write your name:</div>
         <input onChange={(e) => {this.props.updateFirstName(e.target.value)}}></input>
-        <a href="/confirmation">link</a>
-        <Confirmation></Confirmation>
+        <button
+          onClick={ (e) => {
+            // this.props.updateFirstName(e.target.value);
+            this.props.nextStep(e);
+          }}>
+            next
+        </button>
       </div>
     );
   }
@@ -19,7 +23,7 @@ class FirstNameComponent extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      updateFirstName: (value) => dispatch(updateFirstName(value))
+      updateFirstName: (value) => dispatch(firstNameHasChanged(value))
   };
 };
 
