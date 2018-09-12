@@ -2,24 +2,29 @@ import React, { Component } from 'react';
 import './FirstName.css';
 import { connect } from 'react-redux';
 import { firstNameHasChanged } from '../../actions/firstNameAction';
+import { Form } from '../Form';
 
 class FirstNameComponent extends Component {
+  
   render() {
     return (
-      <div>
-        <div>Please write your name:</div>
-        <input onChange={(e) => {this.props.updateFirstName(e.target.value)}}></input>
-        <button
-          onClick={ (e) => {
-            // this.props.updateFirstName(e.target.value);
-            this.props.nextStep(e);
-          }}>
-            next
-        </button>
-      </div>
+      <Form 
+        name="full name" 
+        type="text"
+        value={this.props.firstName}
+        handleValueChange={this.props.updateFirstName}
+        nextStep={this.props.nextStep}
+      >
+      </Form>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    firstName: state.firstName,
+  }
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -27,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(FirstNameComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(FirstNameComponent);

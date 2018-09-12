@@ -5,3 +5,5 @@ export { Email } from './Email';
 export { Phone } from './Phone';
 export { Salary } from './Salary';
 export { ProgressBar } from './ProgressBar';
+export { Form } from './Form';
+export { Success } from './Success';

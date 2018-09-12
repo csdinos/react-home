@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Provider } from 'react-redux';
 import { createStore } from './store/';
+import { PageHeader } from 'react-bootstrap';
 import {
   FirstName,
   Email,
@@ -10,7 +10,10 @@ import {
   Phone,
   Salary,
   ProgressBar,
+  Success,
   } from './components';
+
+import './App.css';
 
 const store = createStore();
 
@@ -23,6 +26,7 @@ class App extends Component {
         }
 
         this.nextStep = this.nextStep.bind(this);
+        this.goToStep = this.goToStep.bind(this);
     }
 
     nextStep(e) {
@@ -32,18 +36,47 @@ class App extends Component {
         });
     }
 
+    goToStep(step) {
+        this.setState({
+            step: step
+        });
+    }
+
     renderStep() {
+        let header = <PageHeader>Join us</PageHeader>
         switch (this.state.step) {
             case 1:
-                return <FirstName nextStep={this.nextStep}></FirstName>;
+                return (
+                    <div>
+                        {header}
+                        <FirstName nextStep={this.nextStep}></FirstName>
+                    </div>
+                );
             case 2:
-                return <Email nextStep={this.nextStep}></Email>;
+                return (
+                    <div>
+                        {header}
+                        <Email nextStep={this.nextStep}></Email>
+                    </div>
+                );
             case 3:
-                return <Phone nextStep={this.nextStep}></Phone>;
+                return (
+                    <div>
+                        {header}
+                        <Phone nextStep={this.nextStep}></Phone>
+                    </div>
+                );
             case 4:
-            return <Salary nextStep={this.nextStep}></Salary>;
+                return (
+                    <div>
+                        {header}
+                        <Salary nextStep={this.nextStep}></Salary>
+                    </div>
+                );
             case 5:
-                return <Confirmation></Confirmation>;
+                return <Confirmation goToStep={this.goToStep} nextStep={this.nextStep}></Confirmation>;
+            case 6:
+                return <Success></Success>;
             default:
                 return <NotFound></NotFound>;
             
@@ -56,7 +89,7 @@ class App extends Component {
 
         return (
             <Provider store={store}>
-                <div>
+                <div className="main-content">
                     { this.renderStep(store) }
                     <ProgressBar progress={progress}></ProgressBar>
                 </div>

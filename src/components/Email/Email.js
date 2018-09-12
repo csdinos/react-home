@@ -2,24 +2,28 @@ import React, { Component } from 'react';
 import './Email.css';
 import { connect } from 'react-redux';
 import { emailHasChanged } from '../../actions/emailAction';
+import { Form } from '../Form';
 
 class EmailComponent extends Component {
   render() {
     return (
-      <div>
-        <div>Please write your email:</div>
-        <input onChange={(e) => {this.props.updateEmail(e.target.value)}}></input>
-        <button
-          onClick={ (e) => {
-            //this.props.updateFirstName(e.target.value);
-            this.props.nextStep(e);
-          }}>
-            next
-        </button>
-      </div>
+      <Form 
+        name="email" 
+        type="email"
+        value={this.props.email}
+        handleValueChange={this.props.updateEmail}
+        nextStep={this.props.nextStep}
+      >
+      </Form>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    email: state.email,
+  }
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -27,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(EmailComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(EmailComponent);

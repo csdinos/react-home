@@ -2,24 +2,28 @@ import React, { Component } from 'react';
 import './Phone.css';
 import { connect } from 'react-redux';
 import { phoneHasChanged } from '../../actions/phoneAction';
+import { Form } from '../Form';
 
 class EmailComponent extends Component {
   render() {
     return (
-      <div>
-        <div>Please write your phone:</div>
-        <input onChange={(e) => {this.props.updatePhone(e.target.value)}}></input>
-        <button
-          onClick={ (e) => {
-            //this.props.updateFirstName(e.target.value);
-            this.props.nextStep(e);
-          }}>
-            next
-        </button>
-      </div>
+      <Form 
+        name="phone" 
+        type="number" 
+        value={this.props.phone} 
+        handleValueChange={this.props.updatePhone}
+        nextStep={this.props.nextStep}
+      >
+      </Form>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    phone: state.phone,
+  }
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -27,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(EmailComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(EmailComponent);
