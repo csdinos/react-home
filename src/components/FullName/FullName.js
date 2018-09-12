@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { firstNameHasChanged } from '../../actions/firstNameAction';
+import { fullNameHasChanged } from '../../actions/fullNameAction';
 import { Form } from '../Form';
 
-class FirstNameComponent extends Component {
+class FulltNameComponent extends Component {
   
   render() {
     return (
       <Form 
         name="full name" 
         type="text"
-        value={this.props.firstName}
-        handleValueChange={this.props.updateFirstName}
+        value={this.props.fullName}
+        handleValueChange={this.props.updateFullName}
         nextStep={this.props.nextStep}
       >
       </Form>
@@ -21,14 +21,14 @@ class FirstNameComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    firstName: state.firstName,
+    fullName: state.fullName,
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      updateFirstName: (value) => dispatch(firstNameHasChanged(value))
+      updateFullName: (value) => dispatch(fullNameHasChanged(value))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FirstNameComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(FulltNameComponent);

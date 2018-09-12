@@ -8,7 +8,7 @@ class SuccessComponent extends Component {
     return (
       <div>
         <PageHeader>Registration successfull</PageHeader>
-        <Well>Thanks, {this.props.firstName}, for joining us. Further info will be sent via e-mail to {this.props.email}!</Well>
+        <Well>Thanks, {this.props.fullName}, for joining us. Further info will be sent via e-mail to {this.props.email}!</Well>
       </div>
     );
   }
@@ -16,7 +16,7 @@ class SuccessComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    firstName: state.firstName,
+    fullName: state.fullName,
     email: state.email
   }
 };

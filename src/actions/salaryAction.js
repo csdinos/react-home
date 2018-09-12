@@ -1,6 +1,8 @@
+import { ACTION_TYPE_SALARY_VALUE } from '../constants';
+
 export const salaryHasChanged = (salary) => {
     return {
-        type: 'SALARY_VALUE',
+        type: ACTION_TYPE_SALARY_VALUE,
         salary
     };
 }

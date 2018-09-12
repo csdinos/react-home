@@ -1,4 +1,4 @@
-export { FirstName } from './FirstName';
+export { FullName } from './FullName';
 export { NotFound } from './NotFound';
 export { Confirmation } from './Confirmation';
 export { Email } from './Email';

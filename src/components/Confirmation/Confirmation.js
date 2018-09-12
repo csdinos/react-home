@@ -1,53 +1,65 @@
 import React, { Component } from 'react';
-import './Confirmation.css';
 import { connect } from 'react-redux';
-import { ListGroup, ListGroupItem, PageHeader, Button } from 'react-bootstrap';
+import { 
+  ListGroup,
+  ListGroupItem,
+  PageHeader,
+  Button
+} from 'react-bootstrap';
+
+import {
+  salaryRanges,
+  CONFIRMATION_FIELD_FULL_NAME,
+  CONFIRMATION_FIELD_EMAIL,
+  CONFIRMATION_FIELD_PHONE,
+  CONFIRMATION_FIELD_SALARY,
+} from '../../constants';
+
+import './Confirmation.css';
 
 class ConfirmationComponent extends Component {
-  constructor(props) {
-    super(props);
+  createListGroupItems = () => {
+    let fields = [
+      {
+        name: CONFIRMATION_FIELD_FULL_NAME,
+        value: this.props.fullName
+      },
+      {
+        name: CONFIRMATION_FIELD_EMAIL,
+        value: this.props.email
+      },
+      {
+        name: CONFIRMATION_FIELD_PHONE,
+        value: this.props.phone
+      },
+      {
+        name: CONFIRMATION_FIELD_SALARY,
+        value: salaryRanges[this.props.salary]
+      },
+    ];
+    let listGroupItems = [];
 
-    this.getSalary = this.getSalary.bind(this);
-  }
-
-  getSalary() {
-    switch (this.props.salary) {
-      case 1:
-        return '0-1000';
-      case 2:
-        return '1000-2000';
-      case 3:
-        return '2000-3000';
-      case 4:
-        return '3000-4000';
-      case 5:
-        return 'More than 4000';
+    for (let i = 0, length = fields.length; i < length; i++) {
+      listGroupItems.push(
+        <ListGroupItem 
+            key={i}
+            className="confirmation--element" 
+            onClick={(e) => this.props.goToStep(i + 1)
+          }>
+            <span className="confirmation--element-title">{fields[i].name}:</span>
+            <span>{fields[i].value}</span>
+          </ListGroupItem>
+      )
     }
+    return listGroupItems;
   }
 
   render() {
-    let salary = this.getSalary();
-
     return (
       <div>
         <PageHeader>Overview</PageHeader>
         <ListGroup className="confirmation--element-group">
-          <ListGroupItem className="confirmation--element" onClick={(e) => this.props.goToStep(1)}>
-            <span className="confirmation--element-title">Full name:</span>
-            <span>{this.props.firstName}</span>
-          </ListGroupItem>
-          <ListGroupItem className="confirmation--element" onClick={(e) => this.props.goToStep(2)}>
-            <span className="confirmation--element-title">Email:</span>
-            <span>{this.props.email}</span>
-          </ListGroupItem>
-          <ListGroupItem className="confirmation--element" onClick={(e) => this.props.goToStep(3)}>
-            <span className="confirmation--element-title">Phone number:</span>
-            <span>{this.props.phone}</span>
-          </ListGroupItem>
-          <ListGroupItem className="confirmation--element" onClick={(e) => this.props.goToStep(4)}>
-            <span className="confirmation--element-title">Salary:</span>
-            <span>{salary}</span>
-          </ListGroupItem>
+          {this.createListGroupItems()}
         </ListGroup>
         <Button onClick={this.props.nextStep} bsStyle="primary" block>Next</Button>
       </div>
@@ -57,7 +69,7 @@ class ConfirmationComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    firstName: state.firstName,
+    fullName: state.fullName,
     email: state.email,
     phone: state.phone,
     salary: state.salary,

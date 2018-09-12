@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import { firstName } from './firstName';
+import { fullName } from './fullName';
 import { email } from './email';
 import { phone } from './phone';
 import { salary } from './salary';
 
 export default combineReducers({
-    firstName,
+    fullName,
     email,
     phone,
     salary,

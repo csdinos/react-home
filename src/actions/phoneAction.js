@@ -1,6 +1,9 @@
+import { ACTION_TYPE_PHONE_VALUE } from '../constants';
+
+
 export const phoneHasChanged = (phone) => {
     return {
-        type: 'PHONE_VALUE',
+        type: ACTION_TYPE_PHONE_VALUE,
         phone
     };
 }

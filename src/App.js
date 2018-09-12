@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { createStore } from './store/';
 import { PageHeader } from 'react-bootstrap';
 import {
-  FirstName,
+  FullName,
   Email,
   Confirmation,
   NotFound,
@@ -49,7 +49,7 @@ class App extends Component {
                 return (
                     <div>
                         {header}
-                        <FirstName nextStep={this.nextStep}></FirstName>
+                        <FullName nextStep={this.nextStep}></FullName>
                     </div>
                 );
             case 2:
