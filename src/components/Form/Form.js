@@ -11,6 +11,7 @@ class FormComponent extends Component {
     this.state = {
       value: props.value,
       touched: false,
+      disabled: true,
     };
   }
   
@@ -30,7 +31,9 @@ class FormComponent extends Component {
     this.setState({
       value: curentValue,
       touched: true,
+      disabled: !(curentValue.length > 0),
     });
+
     this.props.handleValueChange(curentValue);
   }
 
@@ -54,7 +57,7 @@ class FormComponent extends Component {
                   autoFocus
                 />
                 <ButtonToolbar>
-                  <Button type="submit" bsStyle="primary" block>Next</Button>
+                  <Button type="submit" bsStyle="primary" disabled={this.state.disabled} block>Next</Button>
                 </ButtonToolbar>
               </FormGroup>
             </Form>    
