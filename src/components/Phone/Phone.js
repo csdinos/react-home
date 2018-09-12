@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Phone.css';
 import { connect } from 'react-redux';
 import { phoneHasChanged } from '../../actions/phoneAction';
 import { Form } from '../Form';

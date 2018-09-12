@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './FirstName.css';
 import { connect } from 'react-redux';
 import { firstNameHasChanged } from '../../actions/firstNameAction';
 import { Form } from '../Form';

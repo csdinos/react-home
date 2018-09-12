@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Success.css';
 import { connect } from 'react-redux';
 import { PageHeader, Well } from 'react-bootstrap';
 

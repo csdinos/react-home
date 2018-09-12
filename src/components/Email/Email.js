@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Email.css';
 import { connect } from 'react-redux';
 import { emailHasChanged } from '../../actions/emailAction';
 import { Form } from '../Form';
