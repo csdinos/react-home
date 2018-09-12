@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fullNameHasChanged } from '../../actions/fullNameAction';
 import { Form } from '../Form';
 
-class FulltNameComponent extends Component {
+class FullNameComponent extends Component {
   
   render() {
     return (
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FulltNameComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(FullNameComponent);
