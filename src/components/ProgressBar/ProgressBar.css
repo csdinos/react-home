@@ -1,9 +1,21 @@
 .progressBar-container {
-    margin: 0 auto;
-    width:20%;
-    text-align: center;
-    position: fixed;
-    left: 50%;
-    bottom: 0px;
-    transform: translate(-50%, -50%);
+  margin: 0 auto;
+  width: 35%;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (min-width: 600px) {
+  .progressBar-container {
+    width: 20%;
   }
+}
+
+@media only screen and (min-width: 992px) {
+  .progressBar-container {
+    width: 15%;
+  }
+}

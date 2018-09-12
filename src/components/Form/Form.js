@@ -11,7 +11,7 @@ class FormComponent extends Component {
     this.state = {
       value: props.value,
       touched: false,
-      disabled: true,
+      disabled: !(this.props.value.length > 0),
     };
   }
   
